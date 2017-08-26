@@ -1,13 +1,29 @@
-<button smDirTooltip="Tooltip text" smDirPosition="bottom center" class="ui button positive" (click)="modal.show({transition: 'fly down'})">Show modal window</button>
 
-<sm-modal #modal title="Hello">
-    <div class="action">
-        <div class="ui black deny button">
-            Nope
+<div class="main ui container">
+  <sm-input icon="Pointing Right" [control]="word" class="left" placeholder="add your word..."
+            (keyup.enter)="addNewWord(word.value)"></sm-input>
+  <p>{{word.value}}</p>
+
+
+  <sm-button icon="arrow left" (click)="shape.show('flip left')"></sm-button>
+  <sm-button icon="arrow right" (click)="shape.show('flip right')"></sm-button>
+  <sm-button icon="arrow up" (click)="shape.show('flip up')"></sm-button>
+  <sm-button icon="arrow down" (click)="shape.show('flip down')"></sm-button>
+  <sm-button icon="arrow retweet" (click)="shape.show('flip over')"></sm-button>
+  <sm-button icon="Pointing Right" (click)="shape.show('refresh')"></sm-button>
+
+  <div class="ui divider"></div>
+  <sm-shape class="ui cube shape" #shape (beforeChange)="beforeChange($event)" (onChange)="onChange($event)">
+    <div class="sides">
+      <div class="side" *ngFor="let word of listWords;let i = index" [class.active]="i===0">
+        <div class="content">
+          <div class="center">
+            {{word}}
+          </div>
         </div>
-        <div class="ui positive right labeled icon button">
-            Yep, that's me
-            <i class="checkmark icon"></i>
-        </div>
+      </div>
     </div>
-</sm-modal>
+  </sm-shape>
+
+
+</div>

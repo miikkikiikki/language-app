@@ -11,12 +11,14 @@ import { AddReviewComponent } from "./components/reviews/add/add.component";
 import { StatisticReviewComponent } from "./components/reviews/statistic/statistic.component";
 import { EventsComponent } from "./components/events/events.component";
 import { Auth } from "./services/auth";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
     imports: [
         BrowserModule,
         NgSemanticModule,
-        routing
+        routing,
+        HttpModule
     ],
     providers: [
         APP_ROUTER_PROVIDERS,
